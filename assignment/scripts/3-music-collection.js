@@ -27,6 +27,20 @@ function findByArtist(artist) {
     return results;
 }
 
+function search(searchAlbum) {
+    let searchCriteria = [];
+    if (searchAlbum === {} || searchAlbum === '') {
+        return collection;
+    }
+    //how to know if it's an empty object or no argument given?
+    for (album of collection) {
+        if (album.artist === searchAlbum. artist && album.yearPublished === searchAlbum.year) {
+            searchCriteria.push(album);
+        }
+    }
+    return searchCriteria;
+}
+
 console.log(addToCollection('Midnights', 'Taylor Swift', 2022));
 console.log(addToCollection('Ambitions', 'ONE OK ROCK', 2017));
 console.log(addToCollection('Be the Cowboy', 'Mitski', 2018));
@@ -38,3 +52,7 @@ console.log(collection);
 showCollection(collection);
 console.log('Matching artist(s):',findByArtist('Fall Out Boy'));
 console.log('Artist not found:',findByArtist('Nicki Minaj'));
+console.log(search({artist: 'Mitski', year: 2018}));
+console.log(search({artist: 'Nicki Minaj', year: 2018}));
+console.log(search({}));
+console.log(search());
